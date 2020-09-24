@@ -14,16 +14,13 @@ defmodule SheetService do
   def process do
     "simple.csv"
     |> SheetService.Detector.detect_encoding()
-    |> is_valid()
+    |> encoding_supported()
     |> SheetService.Parser.parse()
 
     {:ok, "Sheet successfully processed"}
   end
 
-  defp is_valid({:ok, file_path, encoding}) do
-    case encoding do
-       "utf-8" -> file_path
-        _ -> nil
-    end
+  defp encoding_supported({:ok, file_path, "utf-8"}) do
+    file_path
   end
 end
