@@ -23,8 +23,4 @@ defmodule SheetService do
   defp validate_encoding({:ok, file_path, "utf-8"}) do
     file_path
   end
-
-  defp validate_encoding(:ok, file_path, _) do
-    file_path
-  end
 end
