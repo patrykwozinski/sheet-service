@@ -12,9 +12,8 @@ defmodule SheetService do
       {:ok, "Sheet successfully processed"}
   """
   def process do
-    file_path = "simple.csv"
 
-    file_path
+    "simple.csv"
     |> SheetService.Detector.detect_encoding()
     |> is_valid()
     |> SheetService.Parser.parse()
