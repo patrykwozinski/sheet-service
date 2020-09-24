@@ -10,5 +10,5 @@ defmodule SheetService.Parser do
   @callback parse(file_path :: String.t()) ::
             {:ok, data :: []} | {:error, errors :: term}
 
-  defdelegate parse(file), to: @parser_implementation
+  defdelegate parse(file_path), to: @parser_implementation
 end
