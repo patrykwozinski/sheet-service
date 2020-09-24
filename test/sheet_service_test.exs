@@ -2,7 +2,9 @@ defmodule SheetServiceTest do
   use ExUnit.Case
   doctest SheetService
 
-  test "greets the world" do
-    assert SheetService.hello() == :world
+  test "process given file" do
+    {result, _message} = SheetService.process()
+
+    assert result == :ok
   end
 end
