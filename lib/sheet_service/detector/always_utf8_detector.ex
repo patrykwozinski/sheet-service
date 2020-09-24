@@ -1,4 +1,4 @@
-defmodule SheetService.Detector.Dummy do
+defmodule SheetService.Detector.AlwaysUtf8 do
   @moduledoc false
   @behaviour SheetService.Detector
 
