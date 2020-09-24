@@ -12,6 +12,20 @@ defmodule SheetService do
       {:ok, "Sheet successfully processed"}
   """
   def process do
+    IO.inspect(
+      "simple.csv"
+      |> File.stream!()
+      |> CSV.decode(separator: ?;)
+      |> Enum.map(fn {:ok, row} ->
+        {:ok, Enum.map(row, fn field ->
+          {:ok, decoded} = Codepagex.to_string(field, :iso_8859_1)
+
+          decoded
+        end) }
+      end)
+      |> Enum.to_list()
+    )
+
     "simple.csv"
     |> SheetService.Detector.detect_encoding()
     |> validate_encoding()
