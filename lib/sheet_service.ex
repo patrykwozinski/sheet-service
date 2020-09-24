@@ -11,7 +11,7 @@ defmodule SheetService do
       file_path
       |> File.stream!()
       |> Stream.map(fn row ->
-        {:ok, row} = Codepagex.to_string(row |> String.replace_prefix("\uFEFF", ""), :iso_8859_1)
+        {:ok, row} = Codepagex.to_string(row |> remove_bom(), :iso_8859_1)
 
         row
       end)
@@ -20,5 +20,9 @@ defmodule SheetService do
     )
 
     {:ok, "Sheet successfully processed"}
+  end
+
+  defp remove_bom(row) do
+    row |> String.replace_prefix("\uFEFF", "")
   end
 end
