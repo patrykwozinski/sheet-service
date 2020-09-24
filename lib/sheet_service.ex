@@ -3,6 +3,7 @@ defmodule SheetService do
   Mechanism that allows us to process sheets with `.csv` and `.xlsx` extensions.
   """
 
+  @spec process(file :: String.t()) :: {:ok, [struct()]}
   @doc """
   Process given path and return data
   """
