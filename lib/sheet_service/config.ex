@@ -4,7 +4,6 @@ defmodule SheetService.Config do
 
     case name do
       :detector -> SheetService.Detector.AlwaysUtf8
-      :parser -> SheetService.Parser.CsvParser
       _ -> nil
     end
   end
