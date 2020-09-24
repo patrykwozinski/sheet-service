@@ -3,8 +3,8 @@ defmodule SheetServiceTest do
   doctest SheetService
 
   test "process given csv file" do
-    {result, _message} = SheetService.process("test/fixtures/simple.csv")
+    {status, result} = SheetService.process("test/fixtures/simple.csv")
 
-    assert result == :ok
+    assert status == :ok
   end
 end

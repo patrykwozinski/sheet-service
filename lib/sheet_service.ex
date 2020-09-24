@@ -7,7 +7,7 @@ defmodule SheetService do
   Process given path and return data
   """
   def process(file_path) do
-    IO.inspect(
+    data =
       file_path
       |> File.stream!()
       |> Stream.map(fn row ->
@@ -17,9 +17,8 @@ defmodule SheetService do
       end)
       |> CSV.decode(separator: ?;, headers: true)
       |> Enum.to_list()
-    )
 
-    {:ok, "Sheet successfully processed"}
+    {:ok, data}
   end
 
   defp remove_bom(row) do
