@@ -12,7 +12,6 @@ defmodule SheetService do
       {:ok, "Sheet successfully processed"}
   """
   def process do
-
     "simple.csv"
     |> SheetService.Detector.detect_encoding()
     |> is_valid()
