@@ -23,6 +23,7 @@ defmodule SheetService.MixProject do
     [
       {:csv, "~> 2.4"},
       {:codepagex, "~> 0.1"},
+      {:xlsxir, "~> 1.6.4"},
     ]
   end
 end

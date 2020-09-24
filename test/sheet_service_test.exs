@@ -18,7 +18,7 @@ defmodule SheetServiceTest do
   end
 
   test "process given xlsx file" do
-    {status, _result} = SheetService.process("test/fixtures/simple.csv")
+    {status, _result} = SheetService.process("test/fixtures/simple.xlsx")
 
     assert status == :ok
   end
