@@ -12,7 +12,8 @@ defmodule SheetService do
       {:ok, "Sheet successfully processed"}
   """
   def process do
-    File.open("hello.csv", [:read]) |> SheetService.Detector.detect_encoding()
+    File.open("hello.csv", [:read])
+    |> SheetService.Detector.detect_encoding()
 
     {:ok, "Sheet successfully processed"}
   end
