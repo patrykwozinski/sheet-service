@@ -2,7 +2,7 @@ defmodule SheetService.Detector do
   @moduledoc """
   Allows to detect encoding of given file
   """
-  @detector_implementation = nil
+  @detector_implementation SheetService.Config.get(:detector)
 
   @doc """
   Detects encoding of given file and returns encoding type

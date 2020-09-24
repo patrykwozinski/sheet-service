@@ -1,5 +1,5 @@
 defmodule SheetService.Config do
-    def get do
-
-    end
+  def get(_name) do
+    SheetService.Detector.Dummy
+  end
 end
