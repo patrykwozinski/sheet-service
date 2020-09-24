@@ -15,7 +15,7 @@ defmodule SheetService do
 
         row
       end)
-      |> CSV.decode(separator: ?;)
+      |> CSV.decode(separator: ?;, headers: true)
       |> Enum.to_list()
     )
 
