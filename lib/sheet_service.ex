@@ -12,7 +12,9 @@ defmodule SheetService do
       {:ok, "Sheet successfully processed"}
   """
   def process do
-    File.stream!("simple.csv") |> CSV.decode(separator: ?;) |> Enum.to_list()
+    file_path = "simple.csv"
+
+    IO.inspect SheetService.Parser.parse(file_path)
 
     case File.open("simple.csv", [:read]) do
       {:ok, file} -> SheetService.Detector.detect_encoding(file)

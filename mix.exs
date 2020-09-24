@@ -21,7 +21,8 @@ defmodule SheetService.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:csv, "~> 2.4"}
+      {:csv, "~> 2.4"},
+      {:codepagex, "~> 0.1"},
     ]
   end
 end

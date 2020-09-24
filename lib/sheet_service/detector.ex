@@ -7,8 +7,8 @@ defmodule SheetService.Detector do
   @doc """
   Detects encoding of given file and returns encoding type
   """
-  @callback detect_encoding(file :: File.t()) ::
-            {:ok, file :: File.t(), encoding :: String.t()} | {:error, errors :: term}
+  @callback detect_encoding(file_path :: String.t()) ::
+            {:ok, encoding :: String.t()} | {:error, errors :: term}
 
   defdelegate detect_encoding(file), to: @detector_implementation
 end
