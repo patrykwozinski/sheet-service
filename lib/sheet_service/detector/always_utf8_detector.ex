@@ -3,7 +3,9 @@ defmodule SheetService.Detector.AlwaysUtf8 do
   @behaviour SheetService.Detector
 
   @spec detect_encoding(File.t()) :: {:ok, String.t()}
-  def detect_encoding(_file) do
+  def detect_encoding(file) do
+    IO.inspect(file)
+
     {:ok, "utf-8"}
   end
 end
