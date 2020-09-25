@@ -3,9 +3,8 @@ defmodule SheetService.Parser.XlsxParserTest do
 
   test "simple xlsx should be parsed succesfully" do
     {:ok, result} = SheetService.Parser.XlsxParser.parse("test/fixtures/simple.xlsx")
-    {:ok, first_result} = result |> List.first()
 
-    IO.inspect(first_result)
+    first_result = result |> List.first()
 
     assert result |> length() == 3
     assert first_result["country"] == "Germany"
