@@ -8,6 +8,13 @@ defmodule SheetService.Parser.ParserLocatorTest do
     assert parser == SheetService.Parser.CsvParser
   end
 
+  test "should find xlsx parser when xlsx file given" do
+    assert {:ok, parser} =
+             SheetService.ParserLocator.find_by_extension("test/fixtures.simple.xlsx")
+
+    assert parser == SheetService.Parser.XlsxParser
+  end
+
   test "should not find parser when invalid file path" do
     assert {:error, :parser_not_found} =
              SheetService.ParserLocator.find_by_extension("test/fixtures/wrong_ext.invalid")
