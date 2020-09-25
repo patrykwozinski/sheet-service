@@ -3,7 +3,8 @@ defmodule SheetService.Parser.CsvParserTest do
 
   test "simple csv should be parsed succesfully" do
     {:ok, result} = SheetService.Parser.CsvParser.parse("test/fixtures/simple.csv")
-    {:ok, first_result} = result |> List.first()
+
+    first_result = result |> List.first()
 
     assert result |> length() == 5
     assert first_result["country"] == "poland"
