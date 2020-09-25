@@ -12,5 +12,6 @@ defmodule SheetService.Parser.CsvParserTest do
     assert first_result["first_name"] == "Lukasz"
     assert first_result["last_name"] == "Laz"
     assert first_result["revenue"] == "1000"
+    assert first_result[""] == nil
   end
 end

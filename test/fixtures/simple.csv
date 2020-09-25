@@ -1,6 +1,6 @@
-﻿email;first_name;last_name;revenue;country
-test1@test.com;Lukasz;Laz;1000;poland
-test2@test.com;Dominik;Zbo;1000;germany
-test3@test.com;Mariusz;Pik;1200;france
-test4@test.com;Josh;Lev;1200;france
-test5@test.com;Paul;Schw;1100;germany
+﻿email;first_name;last_name;revenue;;country
+test1@test.com;Lukasz;Laz;1000;a;poland
+test2@test.com;Dominik;Zbo;1000;b;germany
+test3@test.com;Mariusz;Pik;1200;c;france
+test4@test.com;Josh;Lev;1200;d;france
+test5@test.com;Paul;Schw;1100;e;germany

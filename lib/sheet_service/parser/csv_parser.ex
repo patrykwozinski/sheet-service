@@ -11,7 +11,10 @@ defmodule SheetService.Parser.CsvParser do
         row
       end)
       |> CSV.decode(separator: ?;, headers: true)
-      |> Enum.map(fn {_key, row} -> row end)
+      |> Enum.map(fn {_key, row} ->
+        row
+        |> Map.delete("")
+      end)
       |> Enum.to_list()
 
     {:ok, data}
