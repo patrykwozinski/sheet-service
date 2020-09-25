@@ -13,12 +13,23 @@ defmodule SheetService.Parser.XlsxParser do
 
     {:ok, sheet} = XlsxReader.sheet(document, sheet_name)
 
-    headers = sheet
-    |> List.first()
-    |> SheetService.HeaderNormalizer.normalize()
+    headers =
+      sheet
+      |> List.first()
+      |> SheetService.HeaderNormalizer.normalize()
 
-    IO.inspect(headers)
+    data =
+      sheet
+      |> Enum.drop(1)
+      |> Enum.map(fn row ->
+        Enum.zip(headers, row)
+        |> Enum.map(fn {header_field, value_field} ->
+          %{header_field => value_field}
+        end)
+      end)
 
-    {:ok, []}
+    IO.inspect(data)
+
+    {:ok, data}
   end
 end
