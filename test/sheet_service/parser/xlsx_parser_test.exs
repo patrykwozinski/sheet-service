@@ -5,6 +5,8 @@ defmodule SheetService.Parser.XlsxParserTest do
     {:ok, result} = SheetService.Parser.XlsxParser.parse("test/fixtures/simple.xlsx")
     {:ok, first_result} = result |> List.first()
 
+    IO.inspect(first_result)
+
     assert result |> length() == 3
     assert first_result["country"] == "Germany"
     assert first_result["email"] == "andreas@email.de"

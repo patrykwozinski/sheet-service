@@ -23,12 +23,21 @@ defmodule SheetService.Parser.XlsxParser do
       |> Enum.drop(1)
       |> Enum.map(fn row ->
         Enum.zip(headers, row)
-        |> Enum.map(fn {header_field, value_field} ->
-          %{header_field => value_field}
+        # |> Enum.map(fn {header_field, value_field} ->
+        #   %{header_field => value_field}
+        # end)
+      end)
+      |> Enum.map(fn row ->
+        start = %{}
+
+        row
+        |> Enum.map(fn {key, field} ->
+          Map.put_new(start, key, field)
+        end)
+        |> Enum.reduce(%{}, fn data, actual ->
+          Enum.into(data, actual)
         end)
       end)
-
-    IO.inspect(data)
 
     {:ok, data}
   end
