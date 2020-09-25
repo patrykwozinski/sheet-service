@@ -34,6 +34,7 @@ defmodule SheetService.Parser.XlsxParser do
         |> Enum.reduce(%{}, fn data, actual ->
           Enum.into(data, actual)
         end)
+        |> Map.delete("")
       end)
 
     {:ok, data}
