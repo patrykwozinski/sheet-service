@@ -14,7 +14,7 @@ defmodule SheetService.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger, :xlsxir]
     ]
   end
 
@@ -23,7 +23,7 @@ defmodule SheetService.MixProject do
     [
       {:csv, "~> 2.4"},
       {:codepagex, "~> 0.1"},
-      {:xlsxir, "~> 1.6.4"},
+      {:xlsxir, "~> 1.6.4"}
     ]
   end
 end

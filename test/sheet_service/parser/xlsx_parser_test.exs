@@ -6,10 +6,14 @@ defmodule SheetService.Parser.XlsxParserTest do
 
     {:ok, first_result} = result |> List.first()
 
-    assert first_result["country"] == "poland"
-    assert first_result["email"] == "test1@test.com"
-    assert first_result["first_name"] == "Lukasz"
-    assert first_result["last_name"] == "Laz"
-    assert first_result["revenue"] == "1000"
+    assert result |> length() == 3
+    assert first_result["country"] == "Germany"
+    assert first_result["email"] == "andreas@email.de"
+    assert first_result["first_name"] == "Andreaß"
+    assert first_result["last_name"] == "Fischer"
+    assert first_result["size"] == "L"
+    assert first_result["height"] == "L"
+    assert first_result["width"] == "L"
+    assert first_result["gender"] == "M"
   end
 end

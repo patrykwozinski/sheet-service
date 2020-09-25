@@ -5,6 +5,7 @@ defmodule SheetService.Parser.CsvParserTest do
     {:ok, result} = SheetService.Parser.CsvParser.parse("test/fixtures/simple.csv")
     {:ok, first_result} = result |> List.first()
 
+    assert result |> length() == 5
     assert first_result["country"] == "poland"
     assert first_result["email"] == "test1@test.com"
     assert first_result["first_name"] == "Lukasz"
