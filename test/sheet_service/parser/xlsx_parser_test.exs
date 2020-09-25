@@ -2,8 +2,7 @@ defmodule SheetService.Parser.XlsxParserTest do
   use ExUnit.Case
 
   test "simple xlsx should be parsed succesfully" do
-    {:ok, result} = SheetService.Parser.XlsxParser.parse("test/fixtures/simple.xlsx")
-
+    result = SheetService.Parser.XlsxParser.parse("test/fixtures/simple.xlsx")
     first_result = result |> List.first()
 
     assert result |> length() == 3

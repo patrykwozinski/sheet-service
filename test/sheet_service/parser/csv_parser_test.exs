@@ -2,8 +2,7 @@ defmodule SheetService.Parser.CsvParserTest do
   use ExUnit.Case
 
   test "simple csv should be parsed succesfully" do
-    {:ok, result} = SheetService.Parser.CsvParser.parse("test/fixtures/simple.csv")
-
+    result = SheetService.Parser.CsvParser.parse("test/fixtures/simple.csv")
     first_result = result |> List.first()
 
     assert result |> length() == 5
