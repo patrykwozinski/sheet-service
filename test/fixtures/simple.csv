@@ -1,4 +1,4 @@
-﻿email;first_name;last_name;revenue;;country
+﻿email;first Name;last_name;revenue;;country
 test1@test.com;Lukasz;Laz;1000;a;poland
 test2@test.com;Dominik;Zbo;1000;b;germany
 test3@test.com;Mariusz;Pik;1200;c;france

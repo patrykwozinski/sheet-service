@@ -2,7 +2,7 @@ defmodule SheetService.Parser.CsvParser do
   @behaviour SheetService.Parser
 
   def parse(file_path) do
-    data =
+    sheet =
       file_path
       |> File.stream!()
       |> Stream.map(fn row ->
@@ -10,12 +10,34 @@ defmodule SheetService.Parser.CsvParser do
 
         row
       end)
-      |> CSV.decode(separator: ?;, headers: true)
-      |> Enum.map(fn {_key, row} ->
+      |> CSV.decode(separator: ?;)
+
+    headers =
+      sheet
+      |> Enum.take(1)
+      |> Enum.map(fn {_, value} -> value end)
+      |> List.first()
+      |> SheetService.HeaderNormalizer.normalize()
+
+    data =
+      sheet
+      |> Enum.drop(1)
+      |> Enum.map(fn {_, value} -> value end)
+      |> Enum.map(fn row ->
+        Enum.zip(headers, row)
+      end)
+      |> Enum.map(fn row ->
+        start = %{}
+
         row
+        |> Enum.map(fn {key, field} ->
+          Map.put_new(start, key, field)
+        end)
+        |> Enum.reduce(%{}, fn data, actual ->
+          Enum.into(data, actual)
+        end)
         |> Map.delete("")
       end)
-      |> Enum.to_list()
 
     {:ok, data}
   end
