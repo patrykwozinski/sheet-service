@@ -1,4 +1,4 @@
 defmodule SheetService.Parser do
   @callback parse(file_path :: String.t()) ::
-              {:ok, list(struct())} | {:error, errors :: term}
+              {:ok, list(map())} | {:error, errors :: term}
 end

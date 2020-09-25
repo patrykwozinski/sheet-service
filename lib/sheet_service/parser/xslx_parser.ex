@@ -23,9 +23,6 @@ defmodule SheetService.Parser.XlsxParser do
       |> Enum.drop(1)
       |> Enum.map(fn row ->
         Enum.zip(headers, row)
-        # |> Enum.map(fn {header_field, value_field} ->
-        #   %{header_field => value_field}
-        # end)
       end)
       |> Enum.map(fn row ->
         start = %{}
