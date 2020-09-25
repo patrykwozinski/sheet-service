@@ -2,11 +2,22 @@ defmodule SheetService.Parser.XlsxParser do
   @behaviour SheetService.Parser
 
   def parse(file_path) do
-    IO.inspect(
+    {:ok, document} =
       file_path
-      |> Xlsxir.stream_list(0)
-      |> Enum.to_list()
-    )
+      |> XlsxReader.open()
+
+    sheet_name =
+      document
+      |> XlsxReader.sheet_names()
+      |> List.first()
+
+    {:ok, sheet} = XlsxReader.sheet(document, sheet_name)
+
+    headers = sheet
+    |> List.first()
+    |> SheetService.HeaderNormalizer.normalize()
+
+    IO.inspect(headers)
 
     {:ok, []}
   end
