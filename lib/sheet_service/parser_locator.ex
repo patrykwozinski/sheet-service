@@ -4,6 +4,7 @@ defmodule SheetService.ParserLocator do
   def find_by_extension(file_path) do
     case Path.extname(file_path) do
       ".csv" -> {:ok, SheetService.Parser.CsvParser}
+      ".xlsx" -> {:ok, SheetService.Parser.XlsxParser}
       _ -> {:error, :parser_not_found}
     end
   end
