@@ -12,7 +12,6 @@ defmodule SheetService.Parser.CsvParser do
       end)
       |> CSV.decode(separator: ?;, headers: true)
       |> Enum.to_list()
-      |> IO.inspect()
 
     {:ok, data}
   end
