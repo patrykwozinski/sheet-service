@@ -4,9 +4,9 @@ defmodule SheetService.Parser.CsvParser do
   def parse(file_path) do
     sheet_stream =
       file_path
-      |> File.stream!()
+      |> File.stream!([:trim_bom])
       |> Stream.map(fn row ->
-        {:ok, row} = Codepagex.to_string(row |> remove_bom(), :iso_8859_1)
+        {:ok, row} = Codepagex.to_string(row, :iso_8859_1)
 
         row
       end)
@@ -49,10 +49,6 @@ defmodule SheetService.Parser.CsvParser do
       end)
       |> Map.delete("")
     end)
-  end
-
-  defp remove_bom(row) do
-    row |> String.replace_prefix("\uFEFF", "")
   end
 
   defp strip_status(sheet) do
