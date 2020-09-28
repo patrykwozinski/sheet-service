@@ -2,7 +2,7 @@ defmodule SheetService.Parser.CsvParser do
   @behaviour SheetService.Parser
 
   def parse(file_path) do
-    sheet =
+    sheet_stream =
       file_path
       |> File.stream!()
       |> Stream.map(fn row ->
@@ -10,6 +10,12 @@ defmodule SheetService.Parser.CsvParser do
 
         row
       end)
+
+    sheet_stream
+    |> SheetService.Parser.Csv.GuessDelimiter.guess_delimiter()
+
+    sheet =
+      sheet_stream
       |> CSV.decode(separator: ?;)
 
     headers =
