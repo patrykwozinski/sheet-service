@@ -5,8 +5,9 @@ defmodule SheetService.Parser.Csv.GuessDelimiter do
     delimiter = file_stream
     |> CSV.decode(separator: ?\n)
     |> Enum.to_list()
-    |> List.first()
-    |> elem(1)
+    |> Enum.map(fn {_, element} ->
+      element|>List.first()
+    end)
     |> List.first()
     |> to_charlist()
     |> Enum.filter(fn char -> Enum.member?(@possible_delimiter, char) end)
@@ -16,6 +17,7 @@ defmodule SheetService.Parser.Csv.GuessDelimiter do
     |> Enum.max_by(fn {_, acc} ->
       acc
     end)
+
     {character, _} = delimiter
 
     character
