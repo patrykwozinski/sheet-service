@@ -12,6 +12,11 @@ defmodule SheetService.Parser.CsvParser do
       end)
 
     delimiter = sheet_stream
+    |> CSV.decode(separator: ?\n)
+    |> Enum.to_list()
+    |> Enum.map(fn {_, element} ->
+      element|>List.first()
+    end)
     |> SheetService.Parser.Csv.GuessDelimiter.guess_delimiter()
 
     sheet =

@@ -1,13 +1,8 @@
 defmodule SheetService.Parser.Csv.GuessDelimiter do
   @possible_delimiter [?;, ?,, ?\t]
 
-  def guess_delimiter(file_stream) do
-    delimiter = file_stream
-    |> CSV.decode(separator: ?\n)
-    |> Enum.to_list()
-    |> Enum.map(fn {_, element} ->
-      element|>List.first()
-    end)
+  def guess_delimiter(lines) do
+    delimiter = lines
     |> List.first()
     |> to_charlist()
     |> Enum.filter(fn char -> Enum.member?(@possible_delimiter, char) end)
