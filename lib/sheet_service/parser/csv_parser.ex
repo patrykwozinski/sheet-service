@@ -11,12 +11,12 @@ defmodule SheetService.Parser.CsvParser do
         row
       end)
 
-    sheet_stream
+    delimiter = sheet_stream
     |> SheetService.Parser.Csv.GuessDelimiter.guess_delimiter()
 
     sheet =
       sheet_stream
-      |> CSV.decode(separator: ?;)
+      |> CSV.decode(separator: delimiter)
 
     headers =
       sheet
