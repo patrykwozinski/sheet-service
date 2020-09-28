@@ -11,13 +11,14 @@ defmodule SheetService.Parser.CsvParser do
         row
       end)
 
-    delimiter = sheet_stream
-    |> CSV.decode(separator: ?\n)
-    |> Enum.to_list()
-    |> Enum.map(fn {_, element} ->
-      element|>List.first()
-    end)
-    |> SheetService.Parser.Csv.GuessDelimiter.guess_delimiter()
+    delimiter =
+      sheet_stream
+      |> CSV.decode(separator: ?\n)
+      |> Enum.to_list()
+      |> Enum.map(fn {_, element} ->
+        element |> List.first()
+      end)
+      |> SheetService.Parser.Csv.GuessDelimiter.guess_delimiter()
 
     sheet =
       sheet_stream
@@ -26,13 +27,13 @@ defmodule SheetService.Parser.CsvParser do
     headers =
       sheet
       |> Enum.take(1)
-      |> Enum.map(fn {_, value} -> value end)
+      |> strip_status()
       |> List.first()
       |> SheetService.HeaderNormalizer.normalize()
 
     sheet
     |> Enum.drop(1)
-    |> Enum.map(fn {_, value} -> value end)
+    |> strip_status()
     |> Enum.map(fn row ->
       Enum.zip(headers, row)
     end)
@@ -52,5 +53,9 @@ defmodule SheetService.Parser.CsvParser do
 
   defp remove_bom(row) do
     row |> String.replace_prefix("\uFEFF", "")
+  end
+
+  defp strip_status(sheet) do
+    sheet |> Enum.map(fn {_, value} -> value end)
   end
 end
