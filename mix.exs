@@ -21,6 +21,7 @@ defmodule SheetService.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:universal_detector, "~> 0.1.0"},
       {:csv, "~> 2.4"},
       {:codepagex, "~> 0.1"},
       {:xlsx_reader, "~> 0.4.0"}

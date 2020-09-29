@@ -7,6 +7,7 @@
   "parallel_stream": {:hex, :parallel_stream, "1.0.6", "b967be2b23f0f6787fab7ed681b4c45a215a81481fb62b01a5b750fa8f30f76c", [:mix], [], "hexpm", "639b2e8749e11b87b9eb42f2ad325d161c170b39b288ac8d04c4f31f8f0823eb"},
   "saxy": {:hex, :saxy, "1.2.0", "da3401bf472d0a1f4b04fd138ff63f3d9055b5e5209cd4a150e01819962c6348", [:mix], [], "hexpm", "c0fe73e8d6328c8a8c8dc1ea432592d52648a0e0e18918385a92bc10dc269790"},
   "setup": {:hex, :setup, "1.8.4", "738db0685dc1741f45c6a9bf78478e0d5877f3d0876c0b50fd02f0210edb5aa4", [:rebar3], [], "hexpm", "dde429443bcf40519eb02e45caa589a3d0193a8bf59cfafe8270e2b883f37430"},
+  "universal_detector": {:hex, :universal_detector, "0.1.0", "0d6b1331e024bbe5eb0879d6d666165ab4248eea6bc61c02ecc865cd3d79a773", [:mix], [], "hexpm", "f954e641568a463544d9f32b505f91bab9bc6d02c726151e7b0528aab46efe8c"},
   "xlsx_reader": {:hex, :xlsx_reader, "0.4.0", "0c6dde58fa4d50b069955bc14ba0fcaa8055f1e194e1b146d97517de2178f8f0", [:mix], [{:decimal, "~> 1.0", [hex: :decimal, repo: "hexpm", optional: true]}, {:saxy, "~> 1.2.0", [hex: :saxy, repo: "hexpm", optional: false]}], "hexpm", "6ecba1eeac9288474c37c68325cc21ac3ba6c05c7043648d9530c46378a375e3"},
   "xlsxir": {:hex, :xlsxir, "1.6.4", "d1e69439cbd9edc1190950f9f883ac364e1f31641e0395ccdb27761791b169a3", [:mix], [{:erlsom, "~> 1.5", [hex: :erlsom, repo: "hexpm", optional: false]}], "hexpm", "38e91f65eb8a4c8dea07d941c8b7e21baf8c8d4938232395c9ffd19d2eb071f2"},
 }
